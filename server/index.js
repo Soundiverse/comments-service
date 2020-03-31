@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const db = require('../db/index.js');
 
 const app = express();
-const port = 4001;
+const port = 8080;
 
 app.use(bodyParser.json());
 
