@@ -1,0 +1,215 @@
+body {
+  margin: 30px;
+}
+
+.CM-comments-app {
+  margin: 50px;
+  display: grid;
+  grid-template-columns: 60%;
+  grid-template-rows: 30px 30px 200px auto;
+  grid-template-areas: "input"
+                       "tracker"
+                       "profile"
+                       "comment";
+}
+
+.CM-comments-input-bar {
+  grid-area: input;
+}
+
+.CM-input-bar {
+  width: 100%;
+}
+
+.CM-tracker {
+  grid-area: tracker;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 30px;
+  grid-template-areas: "tracker-left tracker-right";
+}
+
+.CM-tracker-btn {
+  grid-area: tracker-left;
+}
+
+.CM-trackerValues {
+  grid-area: tracker-right;
+  text-align: right;
+}
+
+.CM-music-profile {
+  grid-area: profile;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-template-rows: 200px;
+  grid-template-areas: "profile-left profile-right";
+}
+
+.CM-comment-section {
+  grid-area: comment;
+  margin-left: 10%;
+}
+
+.CM-musicProfile-left {
+  grid-area: profile-left;
+  position: absolute;
+  text-align: center;
+}
+
+.CM-musicProfile-right {
+  grid-area: profile-right;
+}
+
+/* Profile */
+
+.CM-follower-icon {
+  height: 15px;
+}
+
+.CM-tracks-icon {
+  height: 15px;
+}
+
+/* Tracker  */
+
+.CM-tracker-play-image {
+  height: 15px;
+}
+
+.CM-tracker-likes-image {
+  height: 15px;
+}
+
+.CM-tracker-reposts-image {
+  height: 15px;
+}
+
+.CM-profile-album-image {
+  height: 100px;
+  border-radius: 50%;
+}
+
+
+
+/* Comments Entry */
+
+.CM-comments-icon {
+  height: 15px;
+}
+
+.CM-commentEntry {
+  display: grid;
+  grid-template-columns: 5% auto 15%;
+  grid-template-rows: 20px 20px 20px auto;
+  grid-template-areas: "pic user time"
+                       "pic sentence reply"
+                       "reply-bar reply-bar reply-bar"
+                       "list list list";
+}
+
+.CM-profileImage {
+  border-radius: 50%;
+  height: 30px;
+  grid-area: pic;
+}
+
+.CM-userName {
+  grid-area: user;
+}
+
+.CM-commentText {
+  grid-area: sentence;
+}
+
+.CM-time {
+  grid-area: time;
+}
+
+.CM-reply-btn {
+  grid-area: reply;
+}
+
+.CM-reply-input-bar {
+  grid-area: reply-bar;
+}
+
+.CM-reply-bar {
+  width: 600px;
+}
+
+.CM-reply-list {
+  grid-area: list;
+}
+
+/* Reply Entry */
+.CM-replyEntry {
+  margin-left: 5%;
+  display: grid;
+  grid-template-columns: 5% auto 15%;
+  grid-template-rows: 20px 20px;
+  grid-template-areas: "pic2 user2 time2"
+                       "pic2 sentence2 sentence2";
+}
+
+.CM-profileImage2 {
+  border-radius: 50%;
+  height: 30px;
+  grid-area: pic2;
+}
+
+.CM-userName2 {
+  grid-area: user2;
+}
+
+.CM-commentText2 {
+  grid-area: sentence2;
+}
+
+.CM-time2 {
+  grid-area: time2;
+}
+
+
+/* User Tool Tip */
+
+.CM-tool-tip {
+  position: relative;
+}
+
+.CM-tool-tip-bubble {
+  min-width: 70px;
+  max-width: 160px;
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 30px 10px;
+  border-radius: 6px;
+  border: solid 1px #ccc;
+}
+
+.CM-tool-tip-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #ccc transparent;
+  /* border: solid 1px #ccc; */
+}
+
+.CM-tool-tip-bottom {
+  top: 100%;
+  left: 50%;
+  padding-top: 9px;
+  transform: translateX(-50%);
+}
+
+.CM-tool-tip-profile-pic {
+  height: 70px;
+  border-radius: 50%;
+}
