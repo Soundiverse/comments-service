@@ -13,8 +13,8 @@ The server is listening on port 8080.
 6) Open localhost:8080 on a browser, ideally Chrome.
 ```
 # API
-### GET method
-### /api/songs/30001/comments
+### GET - method
+### Endpoint:  /api/songs/30001/comments
 ```sh
 Fetch all comments associated with songID 30001
 
@@ -73,8 +73,8 @@ Data Type: JSON
 ```
 
 
-### POST method
-### /api/songs/123/comments
+### POST - method
+### Endpoint:  /api/songs/123/comments
 Create a new comment for songID 123
 
 #### Request
@@ -91,8 +91,8 @@ Expected request body type: JSON
 ```
 
 
-### POST method
-### /api/songs/123/comments/111/replies
+### POST - method
+### Endpoint:  /api/songs/123/comments/111/replies
 Create a new reply for comment with ID 111 associated with songID 123
 
 #### Request
@@ -109,8 +109,8 @@ Expected request body type: JSON
 ```
 
 
-### PUT method
-### /api/songs/123/comments/111
+### PUT - method
+### Endpoint:  /api/songs/123/comments/111
 Update the comment with ID 111 associated with songID 123
 
 #### Request
@@ -126,18 +126,14 @@ Expected request body type: JSON
 ```
 
 
-### DELETE method
-### /api/songs/123/comments/111
+### DELETE - method
+### Endpoint:  /api/songs/123/comments/111
 Delete comment with ID 111 associated with songID 123 
 
 #### Request
 ```sh
 No request body required.
 ```
-
-
-
-As soon as the index.html document is served statically from the server, and the main react components mount, there will be a GET request to fetch all existing data.
 
 
 
