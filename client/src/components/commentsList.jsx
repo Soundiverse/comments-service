@@ -10,7 +10,7 @@ const CommentsList = ({ comments, addReply }) => (
     </div>
     <div className="CM-commentList">
       {comments.map((comment) =>
-        <CommentsEntry comment={comment} addReply={addReply} key={comment._id} />
+        <CommentsEntry comment={comment} addReply={addReply} key={comment.id} />
       )}
     </div>
   </div>

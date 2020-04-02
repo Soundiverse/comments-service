@@ -4,7 +4,7 @@ import ReplyEntry from './replyEntry.jsx';
 const ReplyList = ({replies}) => (
   <div>
     {replies.map((reply) => 
-      <ReplyEntry reply={reply} key={reply._id} />,
+      <ReplyEntry reply={reply} key={reply.id} />,
     )}
   </div>
 );

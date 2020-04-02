@@ -47,8 +47,8 @@ class ReplyEntry extends React.Component {
     return (
       <div>
         <div className="CM-replyEntry">
-          <img className="CM-profileImage2" src={this.props.reply.name[0].image} alt="" />
-          <div className="CM-userName2">{this.props.reply.name[0].name}</div>
+          <img className="CM-profileImage2" src={this.props.reply.userInfo.image} alt="" />
+          <div className="CM-userName2">{this.props.reply.userInfo.name}</div>
           <div className="CM-commentText2">{this.props.reply.text}</div>
           <div className="CM-time2">{this.state.time}</div>
         </div>

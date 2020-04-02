@@ -53,7 +53,7 @@ const commentAndReplyCreator = () => {
 const allComments = commentAndReplyCreator();
 
 
-mongoose.connect('mongodb://172.17.0.2:27017/audiblyComments', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/audiblyComments', { useNewUrlParser: true })
   .then(() => {
     console.log('Connection to Mongo Database established. What would you like to do today?');
   })
@@ -78,7 +78,7 @@ const myComments = mongoose.model('comments',
   new mongoose.Schema(
     {
       songId: Number,
-      name: [childUser],
+      userInfo: [childUser],
       text: String,
       time: Number,
       reply: [childReplies],
