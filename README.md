@@ -13,7 +13,8 @@ The server is listening on port 8080.
 6) Open localhost:8080 on a browser, ideally Chrome.
 ```
 # API
-### GET /api/songs/30001/comments
+### GET method
+### /api/songs/30001/comments
 ```sh
 Fetch all comments associated with songID 30001
 
@@ -70,7 +71,9 @@ Data Type: JSON
 ] 
 ```
 
-### POST /api/songs/123/comments
+
+### POST method
+### /api/songs/123/comments
 Create a new comment for songID 123
 
 #### Request
@@ -86,7 +89,9 @@ Expected request body type: JSON
 }
 ```
 
-### POST /api/songs/123/comments/111/replies
+
+### POST method
+### /api/songs/123/comments/111/replies
 Create a new reply for comment with ID 111 associated with songID 123
 
 #### Request
@@ -102,7 +107,9 @@ Expected request body type: JSON
 }
 ```
 
-### PUT /api/songs/123/comments/111
+
+### PUT method
+### /api/songs/123/comments/111
 Update the comment with ID 111 associated with songID 123
 
 #### Request
@@ -117,7 +124,9 @@ Expected request body type: JSON
 }
 ```
 
-### DELETE /api/songs/123/comments/111
+
+### DELETE method
+### /api/songs/123/comments/111
 Delete comment with ID 111 associated with songID 123 
 
 #### Request
