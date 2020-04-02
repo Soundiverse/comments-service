@@ -49,7 +49,7 @@ class App extends React.Component {
 
   addComment(input) {
     console.log(`the comment ${input} was posted`)
-    axios.post('/api/comments', {input})
+    axios.post('/api/song/comments', {input})
       .then(() => {
         console.log('post request succeeded')
         this.getComments();

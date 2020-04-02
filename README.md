@@ -13,20 +13,22 @@ The server is listening on port 8080.
 6) Open localhost:8080 on a browser, ideally Chrome.
 ```
 # API
-### GET /api/song/123/comments
+### GET /api/songs/30001/comments
 ```sh
-Fetch all comments associated with songID 123
+Fetch all comments associated with songID 30001
+
+Note: Each comment might have nested similar object which correspond to the replies. While Comments and their respetctive replies have separate POST request routes, both are pulled together with this same GET request.
 ```
-##### Response
+#### Response
 ```sh
 Data Type: JSON
 ```
-#### Example response
+##### Example response
 ```sh
 [
   { 
     "songId": 30001,
-    "messageId": 1982,
+    "commentId": 1982,
     "userInfo": {
         "id": 1221, 
         "name": "Ander Weed", 
@@ -40,7 +42,7 @@ Data Type: JSON
   },
   { 
     "songId": 30001,
-    "messageId": 1986,
+    "commentId": 1986,
     "userInfo": {
         "id": 122231, 
         "name": "Deluxo34", 
@@ -52,7 +54,7 @@ Data Type: JSON
     "commentTimeStamp" : 1585965547716, 
     "replies" : [
         { 
-            "messageId": 1986,
+            "commentId": 1986,
             "userInfo": {
                 "id": 122231, 
                 "name": "Deluxo34", 
@@ -68,14 +70,61 @@ Data Type: JSON
 ] 
 ```
 
-#### POST /api/song/123/comments
+### POST /api/songs/123/comments
 Create a new comment for songID 123
 
-#### PUT /api/song/123/comments/111
+#### Request
+```sh
+Expected request body type: JSON
+```
+##### Example request body
+```sh
+{
+  "userId": 1221, 
+  "text" : "The sound quality is magical", 
+  "commentTimeStamp" : 1585693022458  
+}
+```
+
+### POST /api/songs/123/comments/111/replies
+Create a new reply for comment with ID 111 associated with songID 123
+
+#### Request
+```sh
+Expected request body type: JSON
+```
+##### Example request body
+```sh
+{
+  "userId": 4334, 
+  "text" : "+1", 
+  "commentTimeStamp" : 15856911478954  
+}
+```
+
+### PUT /api/songs/123/comments/111
 Update the comment with ID 111 associated with songID 123
 
-#### DELETE /api/song/123/comments/111
+#### Request
+```sh
+Expected request body type: JSON
+```
+##### Example request body
+```sh
+{ 
+  "text" : "+2", 
+  "commentTimeStamp" : 15856911413342  
+}
+```
+
+### DELETE /api/songs/123/comments/111
 Delete comment with ID 111 associated with songID 123 
+
+#### Request
+```sh
+No request body required.
+```
+
 
 
 As soon as the index.html document is served statically from the server, and the main react components mount, there will be a GET request to fetch all existing data.
