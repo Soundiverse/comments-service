@@ -14,9 +14,9 @@ The server is listening on port 8080.
 ```
 # API
 ### GET - method
-### Endpoint:  /api/songs/30001/comments
+### Endpoint:  /api/songs/:songID/comments
 ```sh
-Fetch all comments associated with songID 30001
+Fetch all comments associated with a specific songID
 
 Note: Each comment might have nested similar object which correspond to the replies. While Comments and their respetctive replies have separate POST request routes, both are pulled together with this same GET request.
 ```
@@ -74,8 +74,8 @@ Data Type: JSON
 
 
 ### POST - method
-### Endpoint:  /api/songs/123/comments
-Create a new comment for songID 123
+### Endpoint:  /api/songs/:songID/comments
+Create a new comment assiated with a specific songID
 
 #### Request
 ```sh
@@ -92,8 +92,8 @@ Expected request body type: JSON
 
 
 ### POST - method
-### Endpoint:  /api/songs/123/comments/111/replies
-Create a new reply for comment with ID 111 associated with songID 123
+### Endpoint:  /api/songs/:songID/comments/:commentID/replies
+Create a new reply for a specific commentID associated with unique songID
 
 #### Request
 ```sh
@@ -110,8 +110,8 @@ Expected request body type: JSON
 
 
 ### PUT - method
-### Endpoint:  /api/songs/123/comments/111
-Update the comment with ID 111 associated with songID 123
+### Endpoint:  /api/songs/:songID/comments/:commentID
+Update a specific comment associated with a unique songID
 
 #### Request
 ```sh
@@ -127,8 +127,8 @@ Expected request body type: JSON
 
 
 ### DELETE - method
-### Endpoint:  /api/songs/123/comments/111
-Delete comment with ID 111 associated with songID 123 
+### Endpoint:  /api/songs/:songID/comments/:commentID
+Delete a specific comment associated with a unique songID 
 
 #### Request
 ```sh
