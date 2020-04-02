@@ -92,8 +92,8 @@ Expected request body type: JSON
 
 
 ### POST - method
-### Endpoint:  /api/songs/:songID/comments/:commentID/replies
-Create a new reply for a specific commentID associated with unique songID
+### Endpoint:  /api/comments/:commentID/replies
+Create a new reply for a specific commentID 
 
 #### Request
 ```sh
