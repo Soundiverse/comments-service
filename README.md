@@ -56,6 +56,7 @@ Data Type: JSON
     "replies" : [
         { 
             "commentId": 1986,
+            "replyID": 1,
             "userInfo": {
                 "id": 122231, 
                 "name": "Deluxo34", 
