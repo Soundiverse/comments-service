@@ -24,7 +24,48 @@ Data Type: JSON
 #### Example response
 ```sh
 [
-  {"songId": 30, "songTime": 2.04, "userName": "Ander Weed", "location": "San Francisco", "followers" : 0, "image" : "https://theholybucket.s3-us-west-1.amazonaws.com/projectaudibly/guest-icon.png", "text" : "Sick tune, bro!", "commentTimeStamp" : 1585693022458, "reply" : [ ], "
+  { 
+    "songId": 30001,
+    "messageId": 1982,
+    "userInfo": {
+        "id": 1221, 
+        "name": "Ander Weed", 
+        "location": "San Francisco", 
+        "followers" : 2, 
+        "picUrl" : "https://theholybucket.s3-us-west-1.amazonaws.com/projectaudibly/guest-icon.png"
+    },  
+    "text" : "Sick tune, bro!", 
+    "commentTimeStamp" : 1585693022458, 
+    "replies" : [ ]
+  },
+  { 
+    "songId": 30001,
+    "messageId": 1986,
+    "userInfo": {
+        "id": 122231, 
+        "name": "Deluxo34", 
+        "location": "Detroit", 
+        "followers" : 185, 
+        "picUrl" : "https://theholybucket.s3-us-west-1.amazonaws.com/projectaudibly/guest-icon.png"
+    },  
+    "text" : "I loved this baseLine, right here!", 
+    "commentTimeStamp" : 1585965547716, 
+    "replies" : [
+        { 
+            "messageId": 1986,
+            "userInfo": {
+                "id": 122231, 
+                "name": "Deluxo34", 
+                "location": "Detroit", 
+                "followers" : 189345, 
+                "picUrl" : "https://theholybucket.s3-us-west-1.amazonaws.com/projectaudibly/guest-icon.png"
+            },  
+            "text" : "I agree, this baseLine is pure butter!", 
+            "commentTimeStamp" : 1585965654472
+        }
+    ]
+  }
+] 
 ```
 
 #### POST /api/song/123/comments
