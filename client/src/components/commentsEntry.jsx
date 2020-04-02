@@ -58,16 +58,16 @@ class CommentsEntry extends React.Component {
     return (
       <div>
         <div className="CM-commentEntry">
-          <UserToolTip user={this.props.comment.name[0]} >
-            <img className="CM-profileImage" src={this.props.comment.name[0].image} alt='' />
+          <UserToolTip user={this.props.comment.userInfo} >
+            <img className="CM-profileImage" src={this.props.comment.userInfo.image} alt='' />
           </UserToolTip>
-          <div className="CM-userName">{this.props.comment.name[0].name}</div>
+          <div className="CM-userName">{this.props.comment.userInfo.name}</div>
           <div className="CM-commentText">{this.props.comment.text}</div>
           <div className="CM-time">{this.state.time}</div>
           <input className="CM-reply-btn" type='submit' value='Reply' onClick={this.showReply} />
-          {this.state.show ? <ReplyInputBar addReply={this.props.addReply} id={this.props.comment._id} /> : null}
+          {this.state.show ? <ReplyInputBar addReply={this.props.addReply} id={this.props.comment.id} /> : null}
           <div className='CM-reply-list'>
-            <ReplyList replies={this.props.comment.reply} />
+            <ReplyList replies={this.props.comment.replies} />
           </div>
         </div>
       </div>
