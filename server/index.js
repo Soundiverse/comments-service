@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/api/comments', (req, res) => {
+app.get('/api/song/:songID/comments', (req, res) => {
   // console.log('get request succeeded');
   db.getAllComments((err, data) => {
     if (err) {
@@ -21,7 +21,7 @@ app.get('/api/comments', (req, res) => {
   });
 });
 
-app.get('/api/reply', (req, res) => {
+app.get('/api/song/:songID/replies', (req, res) => {
   // console.log('get request succeeded');
   db.getAllComments((err, data) => {
     if (err) {
