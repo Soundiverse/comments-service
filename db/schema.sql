@@ -1,5 +1,6 @@
 --  psql -U rodrigosanchezgaos -d commentsDB < schema.sql
 
+DROP TABLE IF EXISTS songs;
 CREATE TABLE songs (
   id SERIAL PRIMARY KEY,
   name VARCHAR,
@@ -11,6 +12,7 @@ CREATE TABLE songs (
   user_id INT
 );
 
+DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   name VARCHAR,
@@ -19,21 +21,16 @@ CREATE TABLE users (
   pic_url VARCHAR
 );
 
+DROP TABLE IF EXISTS comments;
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
-  created_at TIMESTAMP,
-  comment text, 
   song_id INT,
-  user_id INT
+  user_id INT,
+  parent_id INT NULL,
+  created_at TIMESTAMP,
+  comment TEXT 
 );
 
-CREATE TABLE replies (
-  id SERIAL PRIMARY KEY,
-  created_at TIMESTAMP,
-  reply text, 
-  comment_id INT,
-  user_id INT
-);
 
 ALTER TABLE songs ADD CONSTRAINT constraint_fk1 FOREIGN KEY (user_id)
 REFERENCES users(id);
@@ -44,8 +41,6 @@ REFERENCES songs(id);
 ALTER TABLE comments ADD CONSTRAINT constraint_fk2 FOREIGN KEY (user_id)
 REFERENCES users(id);
 
-ALTER TABLE replies ADD CONSTRAINT constraint_fk FOREIGN KEY (comment_id)
+ALTER TABLE comments ADD CONSTRAINT constraint_fk3 FOREIGN KEY (parent_id)
 REFERENCES comments(id);
 
-ALTER TABLE replies ADD CONSTRAINT constraint_fk2 FOREIGN KEY (user_id)
-REFERENCES users(id);
