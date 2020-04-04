@@ -1,5 +1,5 @@
 
-CREATE KEYSPACE soundCloud WITH replication = {‘class’: ‘SimpleStrategy’, ‘replication_factor’ : 3};
+CREATE KEYSPACE soundCloud WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3};
 
 CREATE TYPE comment.user (
   name text, 
