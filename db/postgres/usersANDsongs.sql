@@ -1,0 +1,2 @@
+COPY users FROM '/Users/rodrigosanchezgaos/repos/sdc/comments-profile/db/data/users.csv' DELIMITER ',' CSV HEADER;
+COPY songs FROM '/Users/rodrigosanchezgaos/repos/sdc/comments-profile/db/data/songs.csv' DELIMITER ',' CSV HEADER;
