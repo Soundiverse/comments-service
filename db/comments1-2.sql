@@ -1,2 +1,0 @@
-COPY comments FROM '/Users/rodrigosanchezgaos/repos/sdc/comments-profile/db/data/comments1.csv' DELIMITER ',' CSV HEADER;
-COPY comments FROM '/Users/rodrigosanchezgaos/repos/sdc/comments-profile/db/data/comments2.csv' DELIMITER ',' CSV HEADER;
