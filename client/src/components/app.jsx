@@ -7,6 +7,14 @@ import Tracker from './tracker.jsx';
 import MusicProfile from './musicProfile.jsx'
 // import styles from './app.css';
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+let random = getRandomInt(1,10000000);
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +32,7 @@ class App extends React.Component {
   }
 
   getComments() {
-    axios.get('/api/comments')
+    axios.get(`/api/songs/${random}/comments`)
       .then((response) => {
         // console.log(response.data);
         this.setState({ comments: response.data });
@@ -38,18 +46,23 @@ class App extends React.Component {
   getReplies() {
     axios.get('/api/reply')
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         this.setState({ comments: response.data });
         console.log('Success! Retrieved data from server');
       })
       .catch((error) => {
         console.log(error, 'failed to retrieve list of commments');
-      });
+      }); 
   }
 
   addComment(input) {
+    let counter = 56000009;
+    const pic = 'https://s3.amazonaws.com/uifaces/faces/twitter/peejfancher/128.jpg';
     console.log(`the comment ${input} was posted`)
-    axios.post('/api/song/comments', {input})
+    axios.post('api/songs/80901/comments', {
+      id: counter, song_id: random, comment_id: counter, created_at: Math.floor((new Date().getTime()) / 1000),
+      comment: input, user_name: 'Guest', pic_url: pic, followers: 666, location: 'Mexico',
+    })
       .then(() => {
         console.log('post request succeeded')
         this.getComments();
