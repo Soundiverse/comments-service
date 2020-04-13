@@ -1,4 +1,4 @@
-const newRelic = require('newrelic');
+// const newRelic = require('newrelic');
 const express = require('express');
 const cassandra = require('cassandra-driver');
 const path = require('path');
@@ -36,15 +36,13 @@ app.get('/api/songs/:songid/comments', (req,res) => {
 app.post('/api/songs/:songid/comments', (req, res) => {
   const song = req.params.songid;
   const {
-    id, song_id, comment_id, created_at, comment, user_name, location, followers, pic_url,
+    comment_ts, created_ts, comment, user_name, location, followers, pic_url
   } = req.body;
-  // console.log('req.body', req.body);
   const query =
-  `INSERT INTO comments_by_song (id, song_id, comment_id, created_at, comment, user_name, location, followers, pic_url) VALUES (${id}, ${song_id}, ${comment_id}, ${created_at}, '${comment}', '${user_name}', '${location}', ${followers}, '${pic_url}')`;
-  // console.log('query: ', query)
+  `INSERT INTO comments_by_song (id, song_id, comment_ts, created_ts, comment, user_name, location, followers, pic_url) VALUES (now(), ${song}, ${comment_ts}, ${created_ts}, '${comment}', '${user_name}', '${location}', ${followers}, '${pic_url}')`;
   client.execute(query)
     .then((result) => {
-      console.log(result);
+      console.log('Comment inserted');
       res.send('added');
     })
     .catch((e) => console.log(e));
