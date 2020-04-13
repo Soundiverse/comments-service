@@ -13,7 +13,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
-let random = getRandomInt(1,10000000);
+let random = getRandomInt(1, 10000000);
 
 class App extends React.Component {
   constructor(props) {

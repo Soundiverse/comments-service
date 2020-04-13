@@ -1,71 +1,51 @@
+const newRelic = require('newrelic');
 const express = require('express');
+const cassandra = require('cassandra-driver');
 const path = require('path');
-const bodyParser = require('body-parser');
-const db = require('./cassandra.js');
 
 const app = express();
-const port = 8080;
 
-app.use(bodyParser.json());
-
+app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/api/song/:songID/comments', (req, res) => {
-  // console.log('get request succeeded');
-  db.getAllComments((err, data) => {
-    if (err) {
-      res.status(400).send('unable to retrieve data from database');
-    } else {
-      res.send(data);
-    }
-  });
+app.listen(3000, () => {
+  console.log('Listening on port 3000');
 });
 
-app.get('/api/song/:songID/replies', (req, res) => {
-  // console.log('get request succeeded');
-  db.getAllComments((err, data) => {
-    if (err) {
-      res.status(400).send('unable to retrieve data from database');
-    } else {
-      res.send(data);
-    }
-  });
+const client = new cassandra.Client({
+  contactPoints: ['localhost'],
+  localDataCenter: 'datacenter1',
+  keyspace: 'soundiverse'
 });
 
-app.get('/api/tracker', (req, res) => {
-  db.getAllTrackers((err, data) => {
-    if (err) {
-      res.status(400).send('unable to retrieve tracker data from database');
-    } else {
-      res.send(data);
-    }
-  });
+client.connect(() => {
+  console.log('connected to cassandra!');
 });
 
-app.post('/api/comments', (req, res) => {
-  db.logCommentInDB(req.body.input, (err, data) => {
-    if (err) {
-      res.status(400).send('unable to log comment into database')
-    } else {
-      res.send(data);
-    }
-  });
+
+app.get('/api/songs/:songid/comments', (req,res) => {
+  const song = req.params.songid;
+  const query = `SELECT * FROM comments_by_song WHERE song_id = ${song}`;
+ // [766524], { prepared: true }
+ console.log('Responding to GET request for song:', song);
+  client.execute(query)
+    .then((result) => res.send(result.rows))
+    .catch((e) => console.log(e));
 });
 
-app.post('/api/reply', (req, res) => {
-  db.logReplyInDB(req.body.reply, req.body.id, (err, data) => {
-    if (err) {
-      res.status(400).send('unable to log reply in database')
-    } else {
-      res.send(data);
-    }
-  });
-});
-
-app.listen(port, (err) => {
-  if (err) {
-    console.log(err, `unable to connect to port ${port}`);
-  } else {
-    console.log(`connected to server at port ${port}`);
-  }
+app.post('/api/songs/:songid/comments', (req, res) => {
+  const song = req.params.songid;
+  const {
+    id, song_id, comment_id, created_at, comment, user_name, location, followers, pic_url,
+  } = req.body;
+  // console.log('req.body', req.body);
+  const query =
+  `INSERT INTO comments_by_song (id, song_id, comment_id, created_at, comment, user_name, location, followers, pic_url) VALUES (${id}, ${song_id}, ${comment_id}, ${created_at}, '${comment}', '${user_name}', '${location}', ${followers}, '${pic_url}')`;
+  // console.log('query: ', query)
+  client.execute(query)
+    .then((result) => {
+      console.log(result);
+      res.send('added');
+    })
+    .catch((e) => console.log(e));
 });

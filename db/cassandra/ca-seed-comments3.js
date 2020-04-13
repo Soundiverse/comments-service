@@ -13,25 +13,24 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
-let counter = 28000000;
 let seconds = 0;
 let dateCounter = 1581466666;
+
 const writer = csvWriter();
 const commentGen = () => {
   writer.pipe(fs.createWriteStream(`comments3.csv`));
   for (let i = 0; i < 140; i++) {	
     for (let j = 0; j < 100000; j++) {
-      counter++;
       seconds++;
       if (seconds >= 6) {
         dateCounter++;
         seconds = 0;
       }
       writer.write({
-        id: counter,
+        id: faker.random.uuid(),
         song_id: getRandomInt(1, 10000001),
-        comment_id: counter,
-        created_at: dateCounter,
+        comment_ts: dateCounter,
+        created_ts: dateCounter,
         comment: faker.lorem.sentence(),
         user_name: faker.name.findName(),
         location: faker.address.city(),
@@ -39,7 +38,7 @@ const commentGen = () => {
         pic_url: faker.image.avatar(),
       });
     }
-    let message = (i < 9) ? `${i + 1}00K comments done!` : `${(i + 1) / 10}Mliion comments done!`;
+    let message = (i < 9) ? `${i + 1}00K comments done!` : `${(i + 1) / 10} Million comments done!`;
     console.log(message);
   }
   writer.end();

@@ -2,10 +2,10 @@ DROP KEYSPACE IF EXISTS soundiverse;
 CREATE KEYSPACE soundiverse WITH replication = { 'class': 'SimpleStrategy', 'replication_factor' : 1 };
 
 CREATE TABLE soundiverse.comments_by_song (
-  id int,
+  id uuid,
   song_id int,
-  comment_id int, 
-  created_at int,
+  comment_ts int, 
+  created_ts int,
   comment text,
   user_name text, 
   location text, 
