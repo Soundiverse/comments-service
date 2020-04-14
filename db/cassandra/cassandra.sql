@@ -11,7 +11,7 @@ CREATE TABLE soundiverse.comments_by_song (
   location text, 
   followers int, 
   pic_url text, 
-  PRIMARY KEY (song_id, comment_id, created_at, id)
+  PRIMARY KEY (song_id, comment_ts, id)
 );
   
 
